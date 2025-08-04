@@ -1,0 +1,19 @@
+[Unit]
+Description=VMS Analytics Service
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+User=ubantu
+WorkingDirectory=/home/ubantu/vms
+Environment=PATH=/home/ubantu/vms/venv/bin
+ExecStart=/home/ubantu/vms/venv/bin/python /home/ubantu/vms/main.py
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=vms-analytics
+
+[Install]
+WantedBy=multi-user.target
